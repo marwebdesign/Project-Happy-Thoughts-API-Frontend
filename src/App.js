@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ThoughtList from 'components/ThoughtList';
 import ThoughtForm from 'components/ThoughtForm';
 
-// Original API:s
-// const LIKES_URL = (thoughtId) => `https://happy-thoughts-technigo.herokuapp.com/thoughts/${thoughtId}/like`
-// const API = 'https://happy-thoughts-technigo.herokuapp.com/thoughts'
-
 const LIKES_URL = (thoughtId) => `https://project-happy-thoughts-api-ebt3b63p3a-lz.a.run.app/thoughts/${thoughtId}/like`
 const API = 'https://project-happy-thoughts-api-ebt3b63p3a-lz.a.run.app/thoughts/'
 
@@ -18,7 +14,8 @@ export const App = () => {
     setLoading(true);
     fetch(API)
       .then((res) => res.json())
-      .then((data) => setThoughtList(data.response))
+      .then((data) => setThoughtList(data.body.body))
+      // .then((data) => console.log(data.body.body))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
@@ -48,7 +45,8 @@ export const App = () => {
     }
     fetch(API, options)
       .then((res) => res.json())
-      .then((data) => fetchThoughts(data.response))
+      // .then((data) => fetchThoughts(data.body))
+      .then((data) => console.log(data.body.body))
       .catch((error) => console.error(error))
       .finally(() => setNewThought(''));
   }
@@ -62,8 +60,9 @@ export const App = () => {
 
     fetch(LIKES_URL(thoughtId), options)
       .then((res) => res.json())
+      // .then((data) => console.log(data.body.body))
       .then((data) => {
-        fetchThoughts(data.response)
+        fetchThoughts(data.body.body)
       })
       .catch((error) => console.error(error))
   }
