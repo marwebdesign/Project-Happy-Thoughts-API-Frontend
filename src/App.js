@@ -15,7 +15,7 @@ export const App = () => {
     fetch(API)
       .then((res) => res.json())
       .then((data) => setThoughtList(data.body.body))
-      // .then((data) => console.log(data.body.body))
+      .then(console.log('yey it works.'))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
@@ -45,14 +45,13 @@ export const App = () => {
     }
     fetch(API, options)
       .then((res) => res.json())
-      // .then((data) => fetchThoughts(data.body))
-      .then((data) => console.log(data.body.body))
+      .then(console.log('yey it works.'))
       .catch((error) => console.error(error))
       .finally(() => setNewThought(''));
   }
   const onLikesIncrease = (thoughtId) => {
     const options = {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       }
@@ -60,7 +59,7 @@ export const App = () => {
 
     fetch(LIKES_URL(thoughtId), options)
       .then((res) => res.json())
-      // .then((data) => console.log(data.body.body))
+      .then(console.log('yey it works.'))
       .then((data) => {
         fetchThoughts(data.body.body)
       })
