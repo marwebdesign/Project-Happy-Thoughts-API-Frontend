@@ -15,7 +15,7 @@ export const App = () => {
     fetch(API)
       .then((res) => res.json())
       .then((data) => setThoughtList(data.body.body))
-      .then(console.log('yey it works.'))
+      .then(console.log('OK'))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
@@ -45,7 +45,8 @@ export const App = () => {
     }
     fetch(API, options)
       .then((res) => res.json())
-      .then(console.log('yey it works.'))
+      .then(console.log('OK'))
+      .then(() => fetchThoughts())
       .catch((error) => console.error(error))
       .finally(() => setNewThought(''));
   }
@@ -59,9 +60,9 @@ export const App = () => {
 
     fetch(LIKES_URL(thoughtId), options)
       .then((res) => res.json())
-      .then(console.log('yey it works.'))
+      .then(console.log('OK'))
       .then((data) => {
-        fetchThoughts(data.body.body)
+        fetchThoughts(data.body)
       })
       .catch((error) => console.error(error))
   }
