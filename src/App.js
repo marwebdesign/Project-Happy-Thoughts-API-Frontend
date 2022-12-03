@@ -49,6 +49,10 @@ export const App = () => {
       .then(() => fetchThoughts())
       .catch((error) => console.error(error))
       .finally(() => setNewThought(''));
+    // .then((newThought) => { setThoughtList((previousThoughts) => [
+    // newThought, ...previousThoughts]); setNewThought('') })
+
+    // .then((newThought) => { setThoughtList((prev) => [newThought.body.body, ...prev]) })
   }
   const onLikesIncrease = (thoughtId) => {
     const options = {

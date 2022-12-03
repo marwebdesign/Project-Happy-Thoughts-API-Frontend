@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ThoughtForm = ({ newTodo: newThought, onNewThoughtChange, onFormSubmit }) => {
+const ThoughtForm = ({ newThought, onNewThoughtChange, onFormSubmit }) => {
   return (
     <form
       onSubmit={onFormSubmit}
