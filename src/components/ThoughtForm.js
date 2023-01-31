@@ -14,7 +14,7 @@ const ThoughtForm = ({ newThought, onNewThoughtChange, onFormSubmit }) => {
         maxLength="140"
         placeholder="Insert happy thoughts here <3" />
 
-      {/* <p className="maxLength"> {140 - newThought.length}  characters left</p> */}
+      <p className="maxLength"> {140 - newThought.length}  characters left</p>
       <button
         className="thoughtBtn"
         type="submit">❤️ Send Happy Thought ❤️

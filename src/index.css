@@ -36,6 +36,7 @@ code {
   grid-template-rows: repeat(3, 1fr);
   background-color: lightgray;
   border: 2px black solid;
+  word-wrap: break-word;
   padding: 20px;
   height: 180px;
   margin-top: 30px;

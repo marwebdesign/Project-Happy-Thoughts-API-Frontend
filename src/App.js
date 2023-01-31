@@ -15,7 +15,6 @@ export const App = () => {
     fetch(API)
       .then((res) => res.json())
       .then((data) => setThoughtList(data.body.body))
-      .then(console.log('OK'))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
@@ -29,7 +28,6 @@ export const App = () => {
   const onNewThoughtChange = (event) => {
     setNewThought(event.target.value);
   }
-  // what daniel calls onNewTaskChange
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -45,14 +43,9 @@ export const App = () => {
     }
     fetch(API, options)
       .then((res) => res.json())
-      .then(console.log('OK'))
       .then(() => fetchThoughts())
       .catch((error) => console.error(error))
       .finally(() => setNewThought(''));
-    // .then((newThought) => { setThoughtList((previousThoughts) => [
-    // newThought, ...previousThoughts]); setNewThought('') })
-
-    // .then((newThought) => { setThoughtList((prev) => [newThought.body.body, ...prev]) })
   }
   const onLikesIncrease = (thoughtId) => {
     const options = {
@@ -64,7 +57,6 @@ export const App = () => {
 
     fetch(LIKES_URL(thoughtId), options)
       .then((res) => res.json())
-      .then(console.log('OK'))
       .then((data) => {
         fetchThoughts(data.body)
       })
@@ -74,19 +66,15 @@ export const App = () => {
   return (
     <div className="outerContainer">
       <div className="innerContainter>">
-        {/* <div className="thoughtFormContainer"> */}
         <ThoughtForm
           newThought={newThought}
           onNewThoughtChange={onNewThoughtChange}
           onFormSubmit={onFormSubmit} />
-        {/* </div> */}
-        {/* <div className="thoughtListContainer"> */}
         <ThoughtList
           loading={loading}
           thoughtList={thoughtList}
           setThoughtList={setThoughtList}
           onLikesIncrease={onLikesIncrease} />
-        {/* </div> */}
       </div>
     </div>
   )
